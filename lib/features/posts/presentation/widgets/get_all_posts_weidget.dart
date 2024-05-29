@@ -12,7 +12,7 @@ class GetAllPostsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text("Posts", style: Theme.of(context).textTheme.headlineMedium),
+        Text("Posts", style: context.textTheme.headlineMedium),
         Expanded(
           child: ListView.builder(
             itemCount: posts.length,
@@ -24,7 +24,7 @@ class GetAllPostsWidget extends StatelessWidget {
                       leading: Text("${posts[index].id}",
                           style: context.textTheme.titleLarge),
                       title: Text(posts[index].title,
-                          style: Theme.of(context).textTheme.titleLarge),
+                          style: context.textTheme.titleLarge),
                       subtitle: Text(posts[index].body,
                           style: context.textTheme.bodyMedium),
                       onTap: () => Navigator.push(

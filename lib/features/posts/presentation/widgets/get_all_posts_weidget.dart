@@ -10,29 +10,36 @@ class GetAllPostsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: posts.length,
-      itemBuilder: (context, index) {
-        return Column(
-          children: [
-            Text(posts[index].title),
-            Card(
-              child: ListTile(
-                leading: Text("${posts[index].id}",
-                    style: context.textTheme.titleLarge),
-                title: Text(posts[index].title,
-                    style: context.textTheme.titleLarge),
-                subtitle: Text(posts[index].body,
-                    style: context.textTheme.bodyMedium),
-                onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (_) => PostDetailsView(post: posts[index]))),
-              ),
-            ),
-          ],
-        );
-      },
+    return Column(
+      children: [
+        Text("Posts", style: Theme.of(context).textTheme.headlineMedium),
+        Expanded(
+          child: ListView.builder(
+            itemCount: posts.length,
+            itemBuilder: (context, index) {
+              return Column(
+                children: [
+                  Card(
+                    child: ListTile(
+                      leading: Text("${posts[index].id}",
+                          style: context.textTheme.titleLarge),
+                      title: Text(posts[index].title,
+                          style: Theme.of(context).textTheme.titleLarge),
+                      subtitle: Text(posts[index].body,
+                          style: context.textTheme.bodyMedium),
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) =>
+                                  PostDetailsView(post: posts[index]))),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }

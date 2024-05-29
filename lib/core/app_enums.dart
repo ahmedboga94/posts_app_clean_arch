@@ -1,0 +1,4 @@
+enum ThemeDeviceState {
+  lightTheme,
+  darkTheme,
+}

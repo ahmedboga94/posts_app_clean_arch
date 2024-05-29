@@ -12,7 +12,7 @@ class GetAllPostsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text("Posts", style: context.textTheme.headlineMedium),
+        Text("Posts", style: context.textTheme.headlineSmall),
         Expanded(
           child: ListView.builder(
             itemCount: posts.length,

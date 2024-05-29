@@ -28,10 +28,11 @@ class MyApp extends StatelessWidget {
         builder: (context, state) {
           return MaterialApp(
               debugShowCheckedModeBanner: false,
-              theme: state is LightThemeState
-                  ? AppThemes.lightTheme
-                  : AppThemes.darkTheme,
+              theme: AppThemes.lightTheme,
+              darkTheme: AppThemes.darkTheme,
               title: "Posts",
+              themeMode:
+                  state is LightThemeState ? ThemeMode.light : ThemeMode.dark,
               home: const PostsView());
         },
       ),

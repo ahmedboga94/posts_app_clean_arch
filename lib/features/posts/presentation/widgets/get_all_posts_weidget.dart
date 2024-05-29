@@ -13,18 +13,24 @@ class GetAllPostsWidget extends StatelessWidget {
     return ListView.builder(
       itemCount: posts.length,
       itemBuilder: (context, index) {
-        return Card(
-          child: ListTile(
-            leading: Text(posts[index].id.toString()),
-            title:
-                Text(posts[index].title, style: context.textTheme.titleLarge),
-            subtitle:
-                Text(posts[index].body, style: context.textTheme.bodyMedium),
-            onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (_) => PostDetailsView(post: posts[index]))),
-          ),
+        return Column(
+          children: [
+            Text(posts[index].title),
+            Card(
+              child: ListTile(
+                leading: Text("${posts[index].id}",
+                    style: context.textTheme.titleLarge),
+                title: Text(posts[index].title,
+                    style: context.textTheme.titleLarge),
+                subtitle: Text(posts[index].body,
+                    style: context.textTheme.bodyMedium),
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => PostDetailsView(post: posts[index]))),
+              ),
+            ),
+          ],
         );
       },
     );

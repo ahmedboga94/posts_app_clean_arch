@@ -34,14 +34,14 @@ class DeletePostConfirmationWidget extends StatelessWidget {
           return AlertDialog(
             title: const Text("Are you sure to delete this post?"),
             actions: [
-              TextButton(
+              ElevatedButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text("No")),
+              ElevatedButton(
                   onPressed: () =>
                       BlocProvider.of<AddDeleteUpdatePostCubit>(context)
                           .deletePost(post),
                   child: const Text("Yes")),
-              TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: const Text("No")),
             ],
           );
         }

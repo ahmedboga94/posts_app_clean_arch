@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:posts_app_clean/core/app_enums.dart';
-import 'package:posts_app_clean/features/posts/presentation/cubit/get_posts/get_posts_cubit.dart';
 import 'package:posts_app_clean/features/posts/presentation/cubit/theme/set_theme_cubit.dart';
 
 class ThemeToggle extends StatelessWidget {
@@ -9,7 +8,7 @@ class ThemeToggle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SetThemeCubit, SetThemeState>(
+    return BlocBuilder<SetThemeCubit, SetThemeState>(
       builder: (context, state) {
         return TextButton.icon(
             onPressed: () {
@@ -20,11 +19,6 @@ class ThemeToggle extends StatelessWidget {
             },
             icon: Icon(state is DarkThemeState ? Icons.dark_mode : Icons.sunny),
             label: Text(state is DarkThemeState ? "Dark" : "Light"));
-      },
-      listener: (BuildContext context, SetThemeState state) {
-        state is LightThemeState
-            ? BlocProvider.of<GetPostsCubit>(context).getAllPosts()
-            : BlocProvider.of<GetPostsCubit>(context).getAllPosts();
       },
     );
   }
